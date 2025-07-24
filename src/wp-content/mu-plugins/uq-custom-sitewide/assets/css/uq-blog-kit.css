@@ -1,0 +1,794 @@
+/**
+ * UQ Blog Kit Styles
+ * WordPress 테마와 독립적인 블로그 스타일
+ */
+
+/* ========================================
+   Base Variables
+   ======================================== */
+:root {
+    --uq-primary-color: #333;
+    --uq-secondary-color: #666;
+    --uq-accent-color: #0073aa;
+    --uq-border-color: #e0e0e0;
+    --uq-bg-color: #f5f5f5;
+    --uq-text-color: #333;
+    --uq-meta-color: #999;
+    --uq-gap: 20px;
+    --uq-border-radius: 8px;
+    --uq-transition: all 0.3s ease;
+}
+
+/* ========================================
+   Post Card - Base Styles
+   ======================================== */
+.uq-post-card {
+    background: #fff;
+    border-radius: var(--uq-border-radius);
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: var(--uq-transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.uq-post-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.uq-post-card__category {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+}
+
+.uq-post-card__category-link {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--uq-accent-color);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: var(--uq-transition);
+}
+
+.uq-post-card__category-link:hover {
+    background: #005a87;
+}
+
+/* ========================================
+   Post Card - Portrait Layout
+   ======================================== */
+.uq-post-card--portrait {
+    position: relative;
+}
+
+.uq-post-card--portrait .uq-post-card__inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.uq-post-card--portrait .uq-post-card__image-wrapper {
+    position: relative;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+}
+
+.uq-post-card--portrait .uq-post-card__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--uq-transition);
+}
+
+.uq-post-card--portrait:hover .uq-post-card__image {
+    transform: scale(1.05);
+}
+
+.uq-post-card--portrait .uq-post-card__content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================================
+   Post Card - Horizontal Layout
+   ======================================== */
+.uq-post-card--horizontal {
+    position: relative;
+}
+
+.uq-post-card--horizontal .uq-post-card__inner {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+}
+
+.uq-post-card--horizontal .uq-post-card__image-wrapper {
+    flex: 0 0 40%;
+    position: relative;
+    overflow: hidden;
+}
+
+.uq-post-card--horizontal .uq-post-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--uq-transition);
+}
+
+.uq-post-card--horizontal:hover .uq-post-card__image {
+    transform: scale(1.05);
+}
+
+.uq-post-card--horizontal .uq-post-card__content {
+    flex: 1;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Image Position Variants */
+.uq-post-card--horizontal.uq-post-card--image-right .uq-post-card__inner {
+    flex-direction: row-reverse;
+}
+
+.uq-post-card--horizontal.uq-post-card--image-right .uq-post-card__category {
+    left: auto;
+    right: 40%;
+    margin-right: 16px;
+}
+
+/* ========================================
+   Post Card Content Elements
+   ======================================== */
+.uq-post-card__title {
+    margin: 0 0 12px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.uq-post-card__title-link {
+    color: var(--uq-text-color);
+    text-decoration: none;
+    transition: var(--uq-transition);
+}
+
+.uq-post-card__title-link:hover {
+    color: var(--uq-accent-color);
+}
+
+.uq-post-card__excerpt {
+    margin: 0 0 16px;
+    color: var(--uq-secondary-color);
+    font-size: 14px;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+}
+
+.uq-post-card__meta {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: var(--uq-meta-color);
+    margin-top: auto;
+}
+
+.uq-post-card__separator {
+    margin: 0 8px;
+}
+
+.uq-post-card__author-link {
+    color: var(--uq-meta-color);
+    text-decoration: none;
+    transition: var(--uq-transition);
+}
+
+.uq-post-card__author-link:hover {
+    color: var(--uq-accent-color);
+}
+
+.uq-post-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.uq-post-card__tag {
+    display: inline-block;
+    padding: 4px 8px;
+    background: var(--uq-bg-color);
+    color: var(--uq-secondary-color);
+    font-size: 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: var(--uq-transition);
+}
+
+.uq-post-card__tag:hover {
+    background: var(--uq-accent-color);
+    color: #fff;
+}
+
+/* ========================================
+   Post Card Group - Base Styles
+   ======================================== */
+.uq-post-card-group {
+    position: relative;
+}
+
+.uq-post-card-group__inner {
+    display: grid;
+    gap: var(--uq-gap);
+}
+
+/* ========================================
+   Post Card Group - Gallery Layout
+   ======================================== */
+.uq-post-card-group--gallery .uq-post-card-group__inner {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.uq-post-card-group--gallery.uq-post-card-group--columns-2 .uq-post-card-group__inner {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.uq-post-card-group--gallery.uq-post-card-group--columns-1 .uq-post-card-group__inner {
+    grid-template-columns: 1fr;
+}
+
+/* Masonry Layout */
+.uq-post-card-group--gallery.uq-post-card-group--masonry .uq-post-card-group__inner {
+    display: block;
+    column-count: 3;
+    column-gap: var(--uq-gap);
+}
+
+.uq-post-card-group--gallery.uq-post-card-group--masonry.uq-post-card-group--columns-2 .uq-post-card-group__inner {
+    column-count: 2;
+}
+
+.uq-post-card-group--gallery.uq-post-card-group--masonry.uq-post-card-group--columns-1 .uq-post-card-group__inner {
+    column-count: 1;
+}
+
+.uq-post-card-group--gallery.uq-post-card-group--masonry .uq-post-card {
+    break-inside: avoid;
+    margin-bottom: var(--uq-gap);
+}
+
+/* ========================================
+   Post Card Group - Row Layout
+   ======================================== */
+.uq-post-card-group--row .uq-post-card-group__inner {
+    grid-template-columns: repeat(3, 1fr);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.uq-post-card-group--row.uq-post-card-group--cards-4 .uq-post-card-group__inner {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.uq-post-card-group--row.uq-post-card-group--cards-2 .uq-post-card-group__inner {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.uq-post-card-group--row.uq-post-card-group--cards-1 .uq-post-card-group__inner {
+    grid-template-columns: 1fr;
+}
+
+.uq-post-card-group--row .uq-post-card {
+    scroll-snap-align: start;
+}
+
+/* Slider/Carousel Styles */
+.uq-post-card-group--slider .uq-post-card-group__slider-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.uq-post-card-group--slider .uq-post-card-group__slider-container {
+    overflow: hidden;
+}
+
+.uq-post-card-group--slider .uq-post-card-group__inner {
+    display: flex;
+    transition: transform 0.3s ease;
+    gap: var(--uq-gap);
+}
+
+.uq-post-card-group--slider .uq-post-card {
+    flex: 0 0 calc(33.333% - (var(--uq-gap) * 2 / 3));
+}
+
+.uq-post-card-group--slider.uq-post-card-group--cards-4 .uq-post-card {
+    flex: 0 0 calc(25% - (var(--uq-gap) * 3 / 4));
+}
+
+.uq-post-card-group--slider.uq-post-card-group--cards-2 .uq-post-card {
+    flex: 0 0 calc(50% - (var(--uq-gap) / 2));
+}
+
+.uq-post-card-group--slider.uq-post-card-group--cards-1 .uq-post-card {
+    flex: 0 0 100%;
+}
+
+/* Navigation Buttons */
+.uq-post-card-group__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--uq-border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--uq-transition);
+    z-index: 2;
+}
+
+.uq-post-card-group__nav:hover {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.uq-post-card-group__nav--prev {
+    left: 20px;
+}
+
+.uq-post-card-group__nav--next {
+    right: 20px;
+}
+
+/* ========================================
+   Post Card Group - List Layout
+   ======================================== */
+.uq-post-card-group--list .uq-post-card-group__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--uq-gap);
+}
+
+.uq-post-card-group--list .uq-post-card {
+    max-width: 100%;
+}
+
+/* ========================================
+   Pagination
+   ======================================== */
+.uq-post-card-group__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 40px;
+}
+
+.uq-post-card-group__pagination button {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 12px;
+    background: #fff;
+    border: 1px solid var(--uq-border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--uq-transition);
+}
+
+.uq-post-card-group__pagination button:hover {
+    background: var(--uq-bg-color);
+}
+
+.uq-post-card-group__pagination button.active {
+    background: var(--uq-accent-color);
+    color: #fff;
+    border-color: var(--uq-accent-color);
+}
+
+/* ========================================
+   Infinite Scroll Loader
+   ======================================== */
+.uq-post-card-group__loader {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.uq-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--uq-bg-color);
+    border-top-color: var(--uq-accent-color);
+    border-radius: 50%;
+    animation: uq-spin 1s linear infinite;
+}
+
+@keyframes uq-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ========================================
+   Icons
+   ======================================== */
+.uq-icon-chevron-left::before {
+    content: '‹';
+    font-size: 24px;
+    line-height: 1;
+}
+
+.uq-icon-chevron-right::before {
+    content: '›';
+    font-size: 24px;
+    line-height: 1;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+@media (max-width: 1024px) {
+    .uq-post-card-group--gallery .uq-post-card-group__inner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .uq-post-card-group--gallery.uq-post-card-group--columns-3 .uq-post-card-group__inner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .uq-post-card-group--gallery.uq-post-card-group--masonry .uq-post-card-group__inner {
+        column-count: 2;
+    }
+    
+    .uq-post-card-group--row .uq-post-card-group__inner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .uq-post-card-group--slider .uq-post-card {
+        flex: 0 0 calc(50% - (var(--uq-gap) / 2));
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --uq-gap: 16px;
+    }
+    
+    .uq-post-card-group--gallery .uq-post-card-group__inner,
+    .uq-post-card-group--gallery.uq-post-card-group--columns-2 .uq-post-card-group__inner,
+    .uq-post-card-group--gallery.uq-post-card-group--columns-3 .uq-post-card-group__inner {
+        grid-template-columns: 1fr;
+    }
+    
+    .uq-post-card-group--gallery.uq-post-card-group--masonry .uq-post-card-group__inner {
+        column-count: 1;
+    }
+    
+    .uq-post-card-group--row .uq-post-card-group__inner {
+        grid-template-columns: 1fr;
+    }
+    
+    .uq-post-card-group--slider .uq-post-card {
+        flex: 0 0 100%;
+    }
+    
+    /* Horizontal to Portrait on Mobile */
+    .uq-post-card--horizontal .uq-post-card__inner {
+        flex-direction: column;
+    }
+    
+    .uq-post-card--horizontal .uq-post-card__image-wrapper {
+        flex: none;
+        padding-top: 56.25%;
+        position: relative;
+    }
+    
+    .uq-post-card--horizontal .uq-post-card__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    .uq-post-card--horizontal.uq-post-card--image-right .uq-post-card__category {
+        right: auto;
+        left: 16px;
+        margin-right: 0;
+    }
+    
+    .uq-post-card__title {
+        font-size: 18px;
+    }
+    
+    .uq-post-card__nav {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .uq-post-card__nav--prev {
+        left: 10px;
+    }
+    
+    .uq-post-card__nav--next {
+        right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .uq-post-card__content {
+        padding: 16px;
+    }
+    
+    .uq-post-card__title {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    
+    .uq-post-card__excerpt {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+    
+    .uq-post-card__meta {
+        font-size: 12px;
+    }
+    
+    .uq-post-card__tags {
+        gap: 6px;
+        margin-top: 8px;
+    }
+    
+    .uq-post-card__tag {
+        font-size: 11px;
+        padding: 2px 6px;
+    }
+}
+
+/**
+ * uq-blog-kit.css에 추가할 스타일
+ * 
+ * 기존 CSS 파일 끝에 다음 내용을 추가해주세요:
+ */
+
+/* ========================================
+   Category Style Variations
+   ======================================== */
+.uq-post-card__category-link--colored {
+    background: var(--uq-accent-color);
+    color: #fff;
+    border: none;
+}
+
+.uq-post-card__category-link--outlined {
+    background: transparent;
+    color: var(--uq-accent-color);
+    border: 1px solid var(--uq-accent-color);
+}
+
+.uq-post-card__category-link--colored:hover,
+.uq-post-card__category-link--outlined:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   Featured Card Styles
+   ======================================== */
+.uq-featured-card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.uq-featured-card .uq-post-card__inner {
+    min-height: 200px;
+}
+
+.uq-featured-card .uq-post-card__image-wrapper {
+    flex: 0 0 60%;
+}
+
+.uq-featured-card .uq-post-card__content {
+    padding: 24px;
+}
+
+.uq-featured-card .uq-post-card__title {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.uq-featured-card .uq-post-card__excerpt {
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* ========================================
+   Category Section Layout
+   ======================================== */
+.uq-category-section {
+    margin-bottom: 50px;
+}
+
+.uq-category-section__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.uq-category-section__title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--uq-text-color);
+}
+
+.uq-category-section__more {
+    color: var(--uq-secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--uq-transition);
+}
+
+.uq-category-section__more:hover {
+    color: var(--uq-accent-color);
+}
+
+.uq-category-section__featured {
+    margin-bottom: 24px;
+}
+
+.uq-category-section__preview {
+    margin-top: 20px;
+}
+
+/* ========================================
+   Image Aspect Ratios
+   ======================================== */
+.uq-post-card__image-wrapper[data-ratio="16:9"] {
+    padding-top: 56.25%;
+}
+
+.uq-post-card__image-wrapper[data-ratio="4:3"] {
+    padding-top: 75%;
+}
+
+.uq-post-card__image-wrapper[data-ratio="1:1"] {
+    padding-top: 100%;
+}
+
+.uq-post-card__image-wrapper[data-ratio="3:2"] {
+    padding-top: 66.67%;
+}
+
+/* ========================================
+   Post Card Group Variations
+   ======================================== */
+.uq-post-card-group--featured {
+    background: var(--uq-bg-color);
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+}
+
+.uq-post-card-group--compact .uq-post-card {
+    box-shadow: none;
+    border: 1px solid var(--uq-border-color);
+}
+
+.uq-post-card-group--compact .uq-post-card:hover {
+    border-color: var(--uq-accent-color);
+}
+
+/* ========================================
+   Empty State
+   ======================================== */
+.uq-post-card-group__empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--uq-meta-color);
+}
+
+.uq-post-card-group__empty-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.3;
+}
+
+.uq-post-card-group__empty-message {
+    font-size: 16px;
+}
+
+/* ========================================
+   Responsive Updates
+   ======================================== */
+@media (max-width: 1024px) {
+    .uq-featured-card .uq-post-card__image-wrapper {
+        flex: 0 0 50%;
+    }
+    
+    .uq-featured-card .uq-post-card__title {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Featured Card를 세로형으로 변환 */
+    .uq-featured-card .uq-post-card__inner {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    .uq-featured-card .uq-post-card__image-wrapper {
+        flex: none;
+        padding-top: 56.25%;
+        position: relative;
+    }
+    
+    .uq-featured-card .uq-post-card__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    .uq-featured-card .uq-post-card__content {
+        padding: 20px;
+    }
+    
+    .uq-featured-card .uq-post-card__title {
+        font-size: 18px;
+    }
+    
+    .uq-category-section__title {
+        font-size: 20px;
+    }
+    
+    .uq-post-card-group--featured {
+        padding: 20px;
+    }
+}
+
+/* ========================================
+   Dark Mode Support (선택사항)
+   ======================================== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --uq-primary-color: #fff;
+        --uq-secondary-color: #ccc;
+        --uq-accent-color: #4a9eff;
+        --uq-border-color: #444;
+        --uq-bg-color: #222;
+        --uq-text-color: #fff;
+        --uq-meta-color: #999;
+    }
+    
+    .uq-post-card {
+        background: #1a1a1a;
+    }
+    
+    .uq-post-card-group--featured {
+        background: #1a1a1a;
+    }
+}
