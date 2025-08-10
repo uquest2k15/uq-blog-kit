@@ -23,7 +23,7 @@
    Post Card - Base Styles
    ======================================== */
 .uq-post-card {
-    background: #fff;
+    background: var(--base-3, #ffffff);
     border-radius: var(--uq-border-radius);
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -354,7 +354,7 @@
 }
 
 .uq-post-card-group__nav:hover {
-    background: #fff;
+    background: var(--base-3, #ffffff);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -394,7 +394,7 @@
     min-width: 36px;
     height: 36px;
     padding: 0 12px;
-    background: #fff;
+    background: var(--base-3, #ffffff);
     border: 1px solid var(--uq-border-color);
     border-radius: 4px;
     font-size: 14px;
@@ -771,8 +771,12 @@
 }
 
 /* ========================================
-   Dark Mode Support (선택사항)
+   Dark Mode Support (선택사항) - 사용 중지됨
    ======================================== */
+/* 2025-07-24: Dark Mode 지원 비활성화
+   - 요청에 따라 Dark Mode 관련 코드를 주석 처리함
+   - 향후 필요시 주석 해제하여 재활성화 가능
+   
 @media (prefers-color-scheme: dark) {
     :root {
         --uq-primary-color: #fff;
@@ -785,10 +789,11 @@
     }
     
     .uq-post-card {
-        background: #1a1a1a;
+        background: var(--uq-bg-color, #222222);
     }
     
     .uq-post-card-group--featured {
         background: #1a1a1a;
     }
 }
+*/

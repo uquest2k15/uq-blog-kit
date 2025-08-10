@@ -1,0 +1,129 @@
+# 문서관리
+- 생성일 : 2025-07-24
+
+
+# 소스 위치
+- mu-plugins/uq-blog-kit/includes/related-posts.php
+- mu-plugins/uq-blog-kit/assets/css/related-posts.css
+- mu-plugins/uq-blog-kit/assets/js/related-posts.js
+
+# 소스 include
+- uq-custom-sitewide.php 에서 related-posts.php 를 인클루드 해야 함.
+
+# Component Structure
+```
+Related Posts Section
+├── Section Header
+│   └── Section Title ("추천 포스트")
+│   
+│
+└── Post Cards Grid
+    └── Post Card (반복)
+        ├── Card Thumbnail
+        ├── Card Title
+        └── Card Excerpt
+```
+
+# CSS Structure with Grid Options
+```
+scss.related-posts-section {
+  .section__header {
+    .section__title { }
+    .section__description { }
+  }
+  
+  .post-cards-grid {
+    // Grid 옵션들
+    &--2x2 {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, auto);
+    }
+    
+    &--1x3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    &--1x4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    &--2x3 {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, auto);
+    }
+  }
+}
+```
+
+
+# Related Post 구현 시 고려사항
+## 1. 관련성 알고리즘
+
+Same Category: 동일 카테고리의 최신 포스트
+Tag-based: 공통 태그가 많은 순서
+Content Similarity: AI/ML 기반 콘텐츠 유사도
+User Behavior: 다른 사용자들이 함께 본 포스트
+Hybrid: 위 방식들의 조합
+
+## 2. 위치 전략
+
+포스트 하단: 가장 일반적, 읽기 완료 후 다음 콘텐츠 유도
+포스트 중간: 긴 글에서 이탈 방지 (스크롤 깊이 기반)
+사이드바 스티키: 스크롤 시 따라다니는 형태
+
+## 3. 표시 개수 권장사항
+
+Desktop: 3-6개 (1x3, 2x3)
+Tablet: 2-4개 (1x2, 2x2)
+Mobile: 2-3개 (1x2, 1x3 세로 스크롤)
+
+## 4. 중복 방지 로직
+```javascript
+// 현재 포스트 제외
+relatedPosts = relatedPosts.filter(post => post.id !== currentPost.id);
+
+// 이미 본 포스트 제외 옵션
+if (excludeViewed) {
+  relatedPosts = relatedPosts.filter(post => !viewedPosts.includes(post.id));
+}
+```
+## 5. 성능 최적화
+
+Lazy Loading: 뷰포트에 들어올 때 로드
+Caching: 관련 포스트 계산 결과 캐싱
+Limit Queries: 필요한 필드만 조회
+
+## 6. 반응형 디자인
+```scss
+.post-cards-grid {
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr !important;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+```
+
+## 7. 컨텍스트별 제목 변화
+
+일반: "관련 포스트"
+같은 시리즈: "이 시리즈의 다른 글"
+같은 저자: "이 저자의 다른 글"
+인기 기반: "많이 읽은 포스트"
+
+## 8. A/B 테스트 포인트
+
+Grid 레이아웃 (1x3 vs 2x2)
+카드 정보량 (제목만 vs 제목+요약)
+이미지 유무
+개수 (3개 vs 6개)
+
+## 9. 접근성 고려사항
+```html
+<section aria-labelledby="related-posts-title">
+  <h2 id="related-posts-title">관련 포스트</h2>
+  <nav aria-label="관련 포스트 목록">
+    <!-- post cards -->
+  </nav>
+</section>
+```

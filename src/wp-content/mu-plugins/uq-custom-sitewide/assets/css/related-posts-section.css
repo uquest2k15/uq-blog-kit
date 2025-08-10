@@ -1,0 +1,83 @@
+/**
+ * UQ Blog Kit - Related Posts Styles
+ * Minimal styles to complement uq_blog_kit
+ * 
+ * @package UQ_Blog_Kit
+ * @subpackage Related_Posts
+ * @since 1.1.0
+ */
+
+/* Related Posts Section Container */
+.related-posts-section {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--base-2, #e0e0e0);
+}
+
+/* Container for proper width control */
+.related-posts-section__container {
+    /* No max-width here - let the theme control container width */
+}
+
+.related-posts-section .section__header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.related-posts-section .section__title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--contrast, #333333);
+    margin: 0;
+}
+
+/* Override uq_blog_kit styles for related posts context */
+.related-posts-section.uq-blog-kit-related {
+    /* Ensure full width usage */
+}
+
+.related-posts-section.uq-blog-kit-related .uq-post-card-group {
+    /* Remove any default max-width from uq_blog_kit */
+    max-width: none;
+}
+
+.related-posts-section.uq-blog-kit-related .uq-post-card__title {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+}
+
+.related-posts-section.uq-blog-kit-related .uq-post-card__excerpt {
+    font-size: 0.875rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .related-posts-section {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .related-posts-section .section__title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .related-posts-section {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding-top: 1.5rem;
+    }
+    
+    .related-posts-section .section__header {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .related-posts-section {
+        display: none;
+    }
+}
