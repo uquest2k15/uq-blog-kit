@@ -24,6 +24,8 @@ require_once UQ_BLOG_KIT_PATH . 'uq-custom-sitewide/includes/uq-blog-kit.php';
 require_once UQ_BLOG_KIT_PATH . 'uq-custom-sitewide/includes/uq-gf-general.php';
 require_once UQ_BLOG_KIT_PATH . 'uq-custom-sitewide/includes/sidebar-cat-filter-widget.php';
 require_once UQ_BLOG_KIT_PATH . 'uq-custom-sitewide/includes/related-posts-section.php';
+// require_once UQ_BLOG_KIT_PATH . 'uq-custom-sitewide/includes/gp-layout-overrides.php';
+// require_once UQ_BLOG_KIT_PATH . 'uq-custom-sitewide/includes/gp-layout-overrides-rules.php';
 
 // 플러그인 초기화
 add_action('init', function() {
