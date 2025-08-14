@@ -1,0 +1,314 @@
+/**
+ * Section Template Styles v1.1.0
+ * 
+ * Styles for reusable section templates
+ * Works with gp-section-template.php
+ * 
+ * @package GeneratePress Child
+ */
+
+/* ==========================================================================
+   CTA Hero Section
+   ========================================================================== */
+.test-blog-cta {
+    /* Inherits from .custom-section--hero */
+}
+
+.test-blog-cta__grid {
+    /* Custom grid for CTA section - 50:50 ratio */
+    grid-template-columns: 1fr 1fr;
+    align-items: start; /* Align from top */
+}
+
+.test-blog-cta__content {
+    /* Inherits from .custom-section__content */
+    padding-top: 10px; /* Title starts 10px below the image */
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.test-blog-cta__title {
+    /* Design spec: CTA Title */
+    color: #000;
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 54px */
+    letter-spacing: -0.28px;
+    margin: 0 0 1.5rem 0;
+}
+
+.test-blog-cta__description {
+    /* Design spec: CTA Description */
+    color: #7A7A7E;
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 30px */
+    letter-spacing: -0.28px;
+    margin-bottom: 2.5rem;
+}
+
+.test-blog-cta__button {
+    /* Design spec: CTA Button */
+    width: 304px;
+    height: 48px;
+    flex-shrink: 0;
+    background-color: #4EC0E1;
+    color: #ffffff;
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 100px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.test-blog-cta__button:hover {
+    background-color: #3BA0C0;
+    color: #ffffff;
+}
+
+.test-blog-cta__image {
+    /* Center align image in column */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.test-blog-cta__image img {
+    width: 433px;
+    height: 291.645px;
+    flex-shrink: 0;
+    display: block;
+    object-fit: contain;
+}
+
+/* ==========================================================================
+   Page Hero Section (v1.0.1)
+   Based on Figma professional-center design
+   ========================================================================== */
+
+/* Page hero inherits from .custom-section--hero */
+.page-hero {
+    /* Override default hero padding for fixed height */
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 600px; /* Fixed height from Figma */
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+/* Dark overlay for better text readability */
+.page-hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3); /* Default 0.3 opacity for lighter overlay */
+    z-index: 1;
+}
+
+/* Use custom-section structure properly */
+.page-hero .custom-section__inner {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* Apply constrained layout padding using CSS variables */
+    padding-left: var(--content-padding-default, 240px);
+    padding-right: var(--content-padding-default, 240px);
+    max-width: 1920px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.page-hero__content-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.page-hero__content {
+    max-width: 900px; /* Increased for longer titles */
+}
+
+/* Title styling from Figma */
+.page-hero__title {
+    font-family: var(--h-1-font-family, "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px; /* 1920px 기준 */
+    line-height: 130%; /* 83.2px */
+    letter-spacing: -0.28px;
+    margin: 0 0 30px 0;
+    color: #000; /* Black text as specified */
+    word-break: keep-all; /* 한글 단어 단위 줄바꿈 */
+}
+
+/* Title with colored span support */
+.page-hero__title .highlight {
+    color: #4EC0E1; /* Accent color from Figma */
+}
+
+/* Description styling from Figma */
+.page-hero__description {
+    font-family: var(--subtitle-1-normal-font-family, "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px; /* 1920px 기준 */
+    line-height: 130%; /* 31.2px */
+    letter-spacing: -0.28px;
+    color: #000; /* Black text as specified */
+    margin: 0 0 32px 0; /* Space before button: 262px - 190px - 40px */
+    word-break: keep-all; /* 한글 단어 단위 줄바꿈 */
+}
+
+/* Button wrapper */
+.page-hero__button-wrapper {
+    margin-top: 32px; /* 262px from top in Figma */
+}
+
+/* Button styling from Figma */
+.page-hero__button {
+    display: inline-block;
+    width: 220px; /* Fixed width from Figma */
+    height: 48px;
+    background-color: #4EC0E1;
+    border-radius: 4px;
+    font-family: var(--button-font-family, "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif);
+    font-weight: var(--button-font-weight, 700);
+    font-size: 20px; /* 1920px 기준 */
+    line-height: 48px; /* Center vertically */
+    text-align: center;
+    letter-spacing: var(--button-letter-spacing, -0.02em);
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.page-hero__button:hover {
+    background-color: #3BA0C0;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
+/* Tablet (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* CTA image responsive */
+    .test-blog-cta__image img {
+        width: 300px;
+        height: 202px;
+    }
+    
+    /* Page hero responsive */
+    .page-hero {
+        height: 500px; /* Reduced height for tablet */
+    }
+    
+    .page-hero .custom-section__inner {
+        padding-left: var(--content-padding-mobile, 40px);
+        padding-right: var(--content-padding-mobile, 40px);
+    }
+    
+    .page-hero__title {
+        font-size: 48px; /* Reduced for tablet */
+    }
+    
+    .page-hero__description {
+        font-size: 20px; /* Reduced for tablet */
+    }
+    
+    .page-hero__button {
+        font-size: 18px; /* Reduced for tablet */
+    }
+}
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    /* CTA section responsive adjustments */
+    .test-blog-cta__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .test-blog-cta__content {
+        padding-top: 0;
+        text-align: center;
+        order: 2;
+    }
+    
+    .test-blog-cta__image {
+        order: 1;
+        margin-bottom: 2rem;
+    }
+    
+    .test-blog-cta__title {
+        font-size: 28px;
+        line-height: 1.4;
+    }
+    
+    .test-blog-cta__description {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    
+    .test-blog-cta__button {
+        width: 100%;
+        max-width: 304px;
+    }
+    
+    .test-blog-cta__image img {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+    }
+    
+    /* Page hero responsive adjustments */
+    .page-hero {
+        height: 400px; /* Reduced height for mobile */
+    }
+    
+    .page-hero .custom-section__inner {
+        padding-left: var(--content-padding-mobile, 20px);
+        padding-right: var(--content-padding-mobile, 20px);
+    }
+    
+    .page-hero__content-wrapper {
+        /* Content wrapper uses explicit padding */
+    }
+    
+    .page-hero__content {
+        max-width: 100%;
+    }
+    
+    .page-hero__title {
+        font-size: 36px; /* Reduced for mobile */
+        line-height: 130%;
+        margin-bottom: 20px;
+    }
+    
+    .page-hero__description {
+        font-size: 18px; /* Reduced for mobile */
+        line-height: 130%;
+        margin-bottom: 24px;
+    }
+    
+    .page-hero__button {
+        width: 100%;
+        max-width: 280px;
+        font-size: 16px; /* Reduced for mobile */
+    }
+}

@@ -23,7 +23,8 @@ define('UQ_BLOG_KIT_PATH', plugin_dir_path(__FILE__));
 require_once UQ_BLOG_KIT_PATH . 'uq-custom-sitewide/includes/uq-blog-kit.php';
 require_once UQ_BLOG_KIT_PATH . 'uq-custom-sitewide/includes/uq-gf-general.php';
 require_once UQ_BLOG_KIT_PATH . 'uq-custom-sitewide/includes/sidebar-cat-filter-widget.php';
-require_once UQ_BLOG_KIT_PATH . 'uq-custom-sitewide/includes/related-posts-section.php';
+require_once UQ_BLOG_KIT_PATH . 'uq-custom-sitewide/includes/gp-customize.php';
+require_once UQ_BLOG_KIT_PATH . 'uq-custom-sitewide/includes/gp-section-template.php';
 // require_once UQ_BLOG_KIT_PATH . 'uq-custom-sitewide/includes/gp-layout-overrides.php';
 // require_once UQ_BLOG_KIT_PATH . 'uq-custom-sitewide/includes/gp-layout-overrides-rules.php';
 
