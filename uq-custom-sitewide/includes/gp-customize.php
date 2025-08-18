@@ -142,38 +142,43 @@ add_filter( 'option_generate_settings', function( $settings ) {
         [
             'name' => __( 'Contrast', 'generatepress' ),
             'slug' => 'contrast',
-            'color' => '#000000',
+            'color' => '#737373',
         ],
         [
             'name' => sprintf( __( 'Contrast %s', 'generatepress' ), '2' ),
             'slug' => 'contrast-2',
-            'color' => '#7a7a7e',
+            'color' => '#525252',
         ],
         [
             'name' => sprintf( __( 'Contrast %s', 'generatepress' ), '3' ),
             'slug' => 'contrast-3',
-            'color' => '#d9d9d9',
+            'color' => '#1e2838',
         ],
         [
             'name' => __( 'Base', 'generatepress' ),
             'slug' => 'base',
-            'color' => '#f4f4f4',
+            'color' => '#141824',
         ],
         [
             'name' => sprintf( __( 'Base %s', 'generatepress' ), '2' ),
             'slug' => 'base-2',
-            'color' => '#f9f9f9',
+            'color' => '#e1e2ed',
         ],
         [
             'name' => sprintf( __( 'Base %s', 'generatepress' ), '3' ),
             'slug' => 'base-3',
-            'color' => '#ffffff',
+            'color' => '#f1f6ff',
         ],
         // Add more color variations here
         [
             'name' => __( 'Accent', 'generatepress' ),
             'slug' => 'accent',
-            'color' => '#4ec0e1',
+            'color' => '#6268f3',
+        ],
+        [
+            'name' => sprintf( __( 'Accent %s', 'generatepress' ), '2' ),
+            'slug' => 'accent-2',
+            'color' => '#feea58',
         ],
     ];
 
@@ -193,7 +198,7 @@ function my_custom_archive_sidebar_layouts( $layout ) {
     // }
 
 	if ( is_home() || is_page( 'blog' ) ) {
-        return 'no-sidebar';
+        return 'left-sidebar';
     }
 
     // 2. Category Archive Page (카테고리 아카이브)
@@ -266,11 +271,11 @@ add_filter( 'option_generate_settings', function( $settings ) {
          * Customizer → Layout → Sidebars
          */
         // Sidebar Layout
-        $settings['layout_setting']         = 'right-sidebar'; // 옵션명 확인완료, default(right-sidebar), right-sidebar, left-sidebar, no-sidebar, both-sidebars, both-left, both-right
+        $settings['layout_setting']         = 'left-sidebar'; // 옵션명 확인완료, default(right-sidebar), right-sidebar, left-sidebar, no-sidebar, both-sidebars, both-left, both-right
         // Blog Sidebar Layout
-        $settings['blog_layout_setting']    = 'right-sidebar'; // 옵션명 확인완료, default(right-sidebar), right-sidebar, left-sidebar, no-sidebar, both-sidebars, both-left, both-right
+        $settings['blog_layout_setting']    = 'left-sidebar'; // 옵션명 확인완료, default(right-sidebar), right-sidebar, left-sidebar, no-sidebar, both-sidebars, both-left, both-right
         // Single Post  Sidebar Layout
-        $settings['single_layout_setting']  = 'right-sidebar'; // 옵션명 확인완료, default(right-sidebar), right-sidebar, left-sidebar, no-sidebar, both-sidebars, both-left, both-right
+        $settings['single_layout_setting']  = 'no-sidebar'; // 옵션명 확인완료, default(right-sidebar), right-sidebar, left-sidebar, no-sidebar, both-sidebars, both-left, both-right
 
         /**
          * Customizer → Layout → Footer
@@ -359,9 +364,9 @@ add_filter( 'option_generate_spacing_settings', function( $settings ) {
 add_filter( 'option_generate_menu_plus_settings', function( $settings ) {
     if ( is_page_template( 'my-custom-full-width-template.php' ) ) {
         // Customizer → Layout → Primary Navigation
-        $settings['mobile_menu_breakpoint'] = '761'; // 옵션명 미확인 Change mobile menu breakpoint
+        $settings['mobile_menu_breakpoint'] = '768'; // 옵션명 미확인 Change mobile menu breakpoint
         $settings['mobile_header'] = 'on'; // 옵션명 미확인 Mobile Header Off/On
-        $settings['mobile_menu_label'] = 'hoho'; // 옵션명 미확인 Mobile Menu Label
+        $settings['mobile_menu_label'] = 'Menu'; // 옵션명 미확인 Mobile Menu Label
     }
     return $settings;
 });

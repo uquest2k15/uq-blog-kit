@@ -15,7 +15,7 @@ add_action( 'wp_enqueue_scripts', 'uq_register_blog_kit_scripts_and_styles');
 function uq_register_blog_kit_scripts_and_styles() {
 
 	if ( false === wp_script_is( 'uq-blog-kit-script', 'registered' ) ) {   
-		$ret = wp_register_script('uq-blog-kit-script', plugin_dir_url(dirname(__FILE__)) . 'assets/js/uq-blog-kit.js', array('jquery'));
+		$ret = wp_register_script('uq-blog-kit-script', plugin_dir_url(dirname(__FILE__)) . 'assets/js/uq-blog-kit.js', array('jquery'), filemtime( plugin_dir_path(dirname(__FILE__)) . 'assets/js/uq-blog-kit.js' ));
 		if ($ret) {
 			//error_log('__## mlf ##__ uq-blog-kit-script register successfully');
 		} else {
@@ -25,7 +25,7 @@ function uq_register_blog_kit_scripts_and_styles() {
 
 	if ( false === wp_style_is( 'uq-blog-kit-style', 'registered' ) ) {
 
-		wp_register_style( 'uq-blog-kit-style', plugin_dir_url(dirname(__FILE__)) . 'assets/css/uq-blog-kit.css', array() );
+		wp_register_style( 'uq-blog-kit-style', plugin_dir_url(dirname(__FILE__)) . 'assets/css/uq-blog-kit.css', array()); //, filemtime( plugin_dir_path(dirname(__FILE__)) . 'assets/css/uq-blog-kit.css' ) );
 		if ($ret) {
 			//error_log('__## mlf ##__ uq-blog-kit-style register successfully');
 		} else {
@@ -224,7 +224,7 @@ class uq_blog_kit {
             // Gallery Layout 옵션
             'masonry' => false,
             'columns' => 3,
-            'pagination' => true,
+            'pagination' => false,
             'infinite_scroll' => false,
             
             // Row Layout 옵션
@@ -233,7 +233,7 @@ class uq_blog_kit {
             'enable_carousel' => false,
             
             // List Layout 옵션
-            'list_pagination' => true,
+            'list_pagination' => false,
             'list_infinite_scroll' => false,
             
             // 공통 옵션

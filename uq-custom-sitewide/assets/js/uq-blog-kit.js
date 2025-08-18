@@ -305,6 +305,7 @@ if (window.hasOwnProperty('jQuery') && 'function' === typeof window.jQuery) {
                     };
                     
                     // 페이지 이동
+                    var isInitialLoad = true; // 초기 로드 플래그 추가
                     var goToPage = function(page) {
                         if (page < 1 || page > totalPages) return;
                         
@@ -326,9 +327,14 @@ if (window.hasOwnProperty('jQuery') && 'function' === typeof window.jQuery) {
                         createPaginationButtons();
                         
                         // 스크롤 위치 조정
-                        $('html, body').animate({
-                            scrollTop: $group.offset().top - 100
-                        }, 300);
+                        // 초기 로드시에는 스크롤 하지 않음
+                        if (!isInitialLoad) {
+                            // 스크롤 애니메이션 비활성화
+                            // $('html, body').animate({
+                            //     scrollTop: $group.offset().top - 100
+                            // }, 300);
+                        }
+                        isInitialLoad = false; // 초기 로드 후 플래그 해제
                     };
                     
                     // 초기화

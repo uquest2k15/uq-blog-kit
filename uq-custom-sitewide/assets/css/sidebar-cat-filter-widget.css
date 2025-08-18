@@ -8,102 +8,122 @@
 
 /* CSS Custom Properties for Color System */
 :root {
-    /* Primary active color - using GeneratePress accent color */
-    --uq-widget-primary-color: var(--accent, #5E5CE6);
-    --uq-widget-primary-color-hsl: 241, 76%, 64%;
+    /* Primary active color - v1.0.1 purple */
+    --uq-widget-primary-color: #5e56f0;
+    --uq-widget-primary-color-hsl: 244, 84%, 63%;
     
     /* Category item colors */
-    --uq-widget-active-color: var(--uq-widget-primary-color);
-    --uq-widget-active-bg-color: hsla(var(--uq-widget-primary-color-hsl), 0.1);
+    --uq-widget-active-color: #5e56f0;
+    --uq-widget-active-bg-color: #efeefd;
     
-    /* Hover states - reduced saturation */
-    --uq-widget-hover-color: var(--accent, hsla(var(--uq-widget-primary-color-hsl), 0.7));
-    --uq-widget-hover-bg-color: hsla(var(--uq-widget-primary-color-hsl), 0.05);
+    /* Hover states */
+    --uq-widget-hover-color: #000000;
+    --uq-widget-hover-bg-color: #f2f2f2;
     
-    /* Search button - similar but different color */
-    --uq-widget-search-color: var(--contrast-2, hsla(var(--uq-widget-primary-color-hsl), 0.8));
-    --uq-widget-search-hover-color: var(--accent, hsla(var(--uq-widget-primary-color-hsl), 0.6));
+    /* Search button */
+    --uq-widget-search-color: #6b7280;
+    --uq-widget-search-hover-color: #5e56f0;
     
-    /* Base colors - using GeneratePress color system */
-    --uq-widget-text-color: var(--contrast, #333333);
-    --uq-widget-text-secondary: var(--contrast-2, #666666);
-    --uq-widget-border-color: var(--base-2, #e5e5e5);
-    --uq-widget-bg-color: var(--base-3, #ffffff);
+    /* Base colors - v1.0.1 neutral palette */
+    --uq-widget-text-color: #000000;
+    --uq-widget-text-secondary: #9ca3af;
+    --uq-widget-border-color: transparent;
+    --uq-widget-bg-color: #ffffff;
 }
 
 /* Base widget styles (common) */
 .uq_sidebar_cat_filter_widget {
     position: relative;
-    background-color: transparent;
+    background-color: var(--uq-widget-bg-color);
     border: none;
     border-radius: 0;
-    padding: 0;
+    padding: 24px;
     margin-bottom: 2rem;
+    box-shadow: none;
 }
 
 .uq_sidebar_cat_filter_widget .widget__header {
-    margin-bottom: 1.5rem;
+    margin-bottom: 16px;
     padding-bottom: 0;
     border-bottom: none;
+    border: none;
 }
 
 .uq_sidebar_cat_filter_widget .widget__title {
     margin: 0;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--uq-widget-text-color);
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1d1f;
     line-height: 1.2;
+    letter-spacing: -0.01em;
+    border: none;
+    box-shadow: none;
 }
 
 .uq_sidebar_cat_filter_widget .widget__content {
     position: relative;
+    border: none;
+    box-shadow: none;
 }
 
 .uq_sidebar_cat_filter_widget .category-list {
     list-style: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .uq_sidebar_cat_filter_widget .category-list__item {
-    margin-bottom: 0.25rem;
+    margin-bottom: 0;
 }
 
 .uq_sidebar_cat_filter_widget .category-list__link {
     display: block;
-    padding: 0.75rem 1rem;
+    padding: 10px 16px;
     text-decoration: none;
     color: var(--uq-widget-text-color);
-    border-radius: 6px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
     transition: all 0.2s ease;
-    font-size: 0.9375rem;
-    line-height: 1.5;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
 }
 
 .uq_sidebar_cat_filter_widget .widget__divider {
-    margin: 1.25rem 0;
-    border-top: 1px solid var(--base-2, #e0e0e0);
+    margin: 20px 0;
+    border-top: 1px solid #f3f4f6;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
 }
 
 .uq_sidebar_cat_filter_widget .widget__footer {
     margin-top: 0;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
     padding-top: 0;
-    border-top: none;
+    border: none;
+    box-shadow: none;
 }
 
 .uq_sidebar_cat_filter_widget .widget__more-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    color: var(--uq-widget-text-color);
+    gap: 8px;
+    color: var(--uq-widget-primary-color);
     text-decoration: none;
-    font-size: 0.875rem;
-    transition: color 0.2s ease;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
 }
 
 .uq_sidebar_cat_filter_widget .widget__more-link:hover {
-    color: var(--uq-widget-hover-color);
+    color: var(--uq-widget-primary-color);
+    opacity: 0.8;
+    gap: 10px;
 }
 
 .uq_sidebar_cat_filter_widget .icon-external {
@@ -116,29 +136,31 @@
 
 .uq_sidebar_cat_filter_widget .widget__search-btn {
     position: relative;
-    margin-top: 2rem;
+    margin-top: 20px;
     width: 100%;
     height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: none;
-    border: 1px solid var(--uq-widget-border-color);
-    border-radius: 6px;
+    background: #f8f9fa;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
     color: var(--uq-widget-search-color);
+    box-shadow: none;
 }
 
 .uq_sidebar_cat_filter_widget .widget__search-btn:hover,
 .uq_sidebar_cat_filter_widget .widget__search-btn:focus {
     color: var(--uq-widget-search-hover-color);
-    border-color: var(--uq-widget-search-hover-color);
+    background: #f3f4f6;
 }
 
 .uq_sidebar_cat_filter_widget .widget__search-btn:focus {
     outline: 2px solid var(--uq-widget-primary-color);
     outline-offset: 2px;
+    box-shadow: none;
 }
 
 .uq_sidebar_cat_filter_widget .icon-search {
@@ -150,18 +172,21 @@
 .uq_sidebar_cat_filter_widget_type01 .category-list__item--active .category-list__link {
     color: var(--uq-widget-active-color);
     background-color: var(--uq-widget-active-bg-color);
-    font-weight: 600;
+    border: none;
+    font-weight: 500;
 }
 
 .uq_sidebar_cat_filter_widget_type01 .category-list__link:hover {
     color: var(--uq-widget-hover-color);
     background-color: var(--uq-widget-hover-bg-color);
+    border: none;
 }
 
 /* Focus styles for accessibility */
 .uq_sidebar_cat_filter_widget_type01 .category-list__link:focus {
     outline: 2px solid var(--uq-widget-primary-color);
     outline-offset: -2px;
+    box-shadow: none;
 }
 
 /* Responsive styles */

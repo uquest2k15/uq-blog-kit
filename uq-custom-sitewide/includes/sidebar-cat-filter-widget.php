@@ -234,7 +234,7 @@ function uq_blog_kit_enqueue_cat_filter_widget_assets() {
             'sidebar-cat-filter-widget',
             UQ_BLOG_KIT_URL . 'uq-custom-sitewide/assets/css/sidebar-cat-filter-widget.css',
             array(),
-            UQ_BLOG_KIT_VERSION
+            filemtime( UQ_BLOG_KIT_PATH . 'uq-custom-sitewide/assets/css/sidebar-cat-filter-widget.css' )
         );
         
         // Enqueue JavaScript
@@ -242,7 +242,7 @@ function uq_blog_kit_enqueue_cat_filter_widget_assets() {
             'sidebar-cat-filter-widget',
             UQ_BLOG_KIT_URL . 'uq-custom-sitewide/assets/js/sidebar-cat-filter-widget.js',
             array('jquery'),
-            UQ_BLOG_KIT_VERSION,
+            filemtime( UQ_BLOG_KIT_PATH . 'uq-custom-sitewide/assets/js/sidebar-cat-filter-widget.js' ),
             true
         );
     }
